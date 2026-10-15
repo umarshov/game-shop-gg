@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d12">
+<meta name="description" content="Game Xit — игровые новости, настройки FPS, гайды и игры для слабых ПК.">
+<title>Game Xit — Игровой портал</title>
+<style>
+:root{--bg:#090d12;--panel:#111923;--green:#a3ff12;--text:#f2f5f8;--muted:#a0adbb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+header{border-bottom:1px solid #202b36;background:#0b1017}
+nav{max-width:1120px;margin:auto;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--green)}
+nav a{color:var(--text);text-decoration:none;margin-left:18px;font-size:14px}
+nav a:hover{color:var(--green)}
+.hero{max-width:1120px;margin:30px auto;padding:60px 24px;border-radius:20px;background:radial-gradient(ellipse at 90% 10%,#294a21 0,transparent 45%),linear-gradient(120deg,#17232a,#10151d 65%);border:1px solid #26372d}
+.tag{color:var(--green);font-size:12px;font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(36px,7vw,66px);line-height:1.03;margin:16px 0}
+.hero p{color:var(--muted);max-width:560px;line-height:1.7}
+.btn{display:inline-block;margin-top:16px;padding:13px 20px;border-radius:9px;background:var(--green);color:#10150b;font-weight:bold;text-decoration:none;border:0;cursor:pointer}
+main{max-width:1120px;margin:0 auto;padding:10px 20px 50px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h2{font-size:25px}
+.search{width:100%;max-width:360px;padding:13px;background:#111923;color:white;border:1px solid #33404c;border-radius:9px;font-size:15px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0 22px}
+.filter{background:#151e28;color:#d8e0e8;border:1px solid #2a3642;padding:9px 14px;border-radius:20px;cursor:pointer}
+.filter.active,.filter:hover{background:var(--green);color:#10150b;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{background:var(--panel);border:1px solid #202d39;border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:#83cb25}
+.art{height:135px;display:flex;align-items:center;justify-content:center;font-size:43px;font-weight:900;background:linear-gradient(135deg,#172b36,#263b24)}
+.art.purple{background:linear-gradient(135deg,#282044,#15273a)}
+.art.orange{background:linear-gradient(135deg,#492d1c,#222d39)}
+.art.blue{background:linear-gradient(135deg,#172c50,#193b39)}
+.art.red{background:linear-gradient(135deg,#4a2026,#242737)}
+.content{padding:18px}
+.category{color:var(--green);font-size:11px;text-transform:uppercase;font-weight:bold;letter-spacing:1px}
+h3{font-size:18px;margin:10px 0}
+.content p{font-size:14px;color:var(--muted);line-height:1.6;min-height:44px}
+.more{background:transparent;border:0;color:var(--green);font-weight:bold;cursor:pointer;padding:8px 0}
+.empty{color:var(--muted);padding:20px 0}
+.info{margin-top:42px;padding:24px;background:#111923;border:1px solid #26333f;border-radius:14px}
+.info p{color:var(--muted);line-height:1.7}
+footer{text-align:center;border-top:1px solid #202b36;padding:26px 16px;color:var(--muted);font-size:13px}
+#notice{color:var(--green);font-size:14px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{margin:16px 12px;padding:38px 20px}nav{padding:16px}.navlinks a{margin-left:8px}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.art{height:120px}.navlinks{width:100%}.navlinks a{margin:0 12px 0 0}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">GAME <span>XIT</span></div>
+<div class="navlinks">
+<a href="#games">Игры</a>
+<a href="#guides">Гайды</a>
+<a href="#about">О сайте</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<div class="tag">ТВОЯ ИГРОВАЯ ТЕРРИТОРИЯ</div>
+<h1>Играй умнее.<br><span style="color:#a3ff12">Играй лучше.</span></h1>
+<p>Настройки FPS, полезные гайды и подборки игр для мощных и слабых ПК. Всё самое нужное для геймеров — в одном месте.</p>
+<a class="btn" href="#games">Исследовать игры ↓</a>
+</section>
+
+<main>
+<section id="games">
+<div class="section-head">
+<h2>Игры и гайды</h2>
+<input id="search" class="search" type="search" placeholder="Найти игру или гайд...">
+</div>
+<div class="filters">
+<button class="filter active" data-filter="all">Все материалы</button>
+<button class="filter" data-filter="fps">FPS и настройки</button>
+<button class="filter" data-filter="pc">Для слабых ПК</button>
+<button class="filter" data-filter="news">Игры</button>
+</div>
+<div class="grid" id="grid">
+
+<article class="card" data-category="fps" data-search="pubg mobile gameloop настройки fps лаги">
+<div class="art">PUBG</div>
+<div class="content"><span class="category">FPS и настройки</span><h3>PUBG Mobile: настройки FPS</h3><p>Как подобрать настройки эмулятора и графики для более плавной игры.</p><button class="more" data-info="PUBG Mobile">Подробнее →</button></div>
+</article>
+
+<article class="card" data-category="pc" data-search="слабый пк игры i3 rx 470">
+<div class="art purple">LOW PC</div>
+<div class="content"><span class="category">Для слабых ПК</span><h3>Игры для слабого компьютера</h3><p>Подборка игр с умеренными системными требованиями.</p><button class="more" data-info="Слабые ПК">Подробнее →</button></div>
+</article>
+
+<article class="card" data-category="fps" data-search="cs2 настройки fps оптимизация">
+<div class="art orange">CS2</div>
+<div class="content"><span class="category">FPS и настройки</span><h3>CS2: как настроить FPS</h3><p>Графика, параметры запуска и настройки для комфортной игры.</p><button class="more" data-info="CS2">Подробнее →</button></div>
+</article>
+
+<article class="card" data-category="news" data-search="игры новинки релизы pc">
+<div class="art blue">NEW GAMES</div>
+<div class="content"><span class="category">Игры</span><h3>Какие игры попробовать?</h3><p>Ищем интересные игры разных жанров для компьютера.</p><button class="more" data-info="Новые игры">Подробнее →</button></div>
+</article>
+
+<article class="card" data-category="fps" data-search="free fire эмулятор настройки fps">
+<div class="art red">FREE FIRE</div>
+<div class="content"><span class="category">FPS и настройки</span><h3>Free Fire на эмуляторе</h3><p>Разбираемся с FPS, управлением и плавностью игры.</p><button class="more" data-info="Free Fire">Подробнее →</button></div>
+</article>
+
+<article class="card" data-category="pc" data-search="кооператив игры на двоих джойстики">
+<div class="art">2 PLAYERS</div>
+<div class="content"><span class="category">Для слабых ПК</span><h3>Игры на двоих за одним ПК</h3><p>Кооперативные игры для друзей и двух контроллеров.</p><button class="more" data-info="Игры на двоих">Подробнее →</button></div>
+</article>
+
+</div>
+<p id="empty" class="empty" hidden>Ничего не найдено. Попробуй другой запрос.</p>
+<p id="notice" aria-live="polite"></p>
+</section>
+
+<section class="info" id="guides">
+<h2>Полезные игровые советы</h2>
+<p>Перед изменением настроек проверяй системные требования игры. Закрывай ненужные приложения, обновляй драйверы видеокарты с официального сайта и следи за температурой компьютера.</p>
+<p>Мы будем добавлять подробные тесты, понятные инструкции и собственные рекомендации.</p>
+</section>
+
+<section class="info" id="about">
+<h2>О Game Xit</h2>
+<p>Game Xit — игровой проект для тех, кто хочет лучше разбираться в играх, настраивать компьютер и находить интересные проекты. Сайт развивается и будет пополняться новыми материалами.</p>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Game Xit · Играй умнее.</footer>
+
+<script>
+const search=document.getElementById('search');
+const cards=[...document.querySelectorAll('.card')];
+const filters=[...document.querySelectorAll('.filter')];
+const empty=document.getElementById('empty');
+const notice=document.getElementById('notice');
+let active='all';
+
+function update(){
+ const q=search.value.toLowerCase().trim();
+ let count=0;
+ cards.forEach(card=>{
+  const matchesText=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);
+  const matchesCategory=active==='all'||card.dataset.category===active;
+  const show=matchesText&&matchesCategory;
+  card.hidden=!show;
+  if(show)count++;
+ });
+ empty.hidden=count!==0;
+}
+search.addEventListener('input',update);
+filters.forEach(button=>button.addEventListener('click',()=>{
+ active=button.dataset.filter;
+ filters.forEach(b=>b.classList.toggle('active',b===button));
+ update();
+}));
+document.querySelectorAll('.more').forEach(button=>{
+ button.addEventListener('click',()=>{
+  const name=button.dataset.info;
+  notice.textContent='Материал «'+name+'» пока готовится. Скоро здесь появится подробный гайд!';
+ });
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
