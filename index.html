@@ -3,195 +3,280 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090d16">
-<title>GAME SHOP GG — PC Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAME SHOP GG — Игры для ПК</title>
 <style>
-:root{--bg:#090d16;--panel:#121b2a;--line:#29364b;--green:#65f58a;--text:#f4f7ff;--muted:#a5b2c6}
+:root {
+  --bg:#090d14;
+  --panel:#111925;
+  --green:#8cff00;
+  --text:#f4f7fb;
+  --muted:#a4afbf;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{background:linear-gradient(130deg,#142d27,#111827 65%,#202642);padding:25px max(18px,calc((100% - 1250px)/2));border-bottom:1px solid var(--line)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif
+}
+header{
+  padding:30px 5%;background:linear-gradient(120deg,#13251b,#101827 65%,#19243a);
+  border-bottom:1px solid #273244
+}
 .logo{font-size:30px;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--green)}
 header p{color:var(--muted);margin-bottom:0}
-main{max-width:1250px;margin:auto;padding:24px 18px}
-.hero{padding:10px 0 18px}
-.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 10px}
+main{max-width:1400px;margin:auto;padding:25px 4%}
+.hero{
+  padding:28px;border-radius:18px;
+  background:linear-gradient(120deg,#182a1e,#141c2a);
+  margin-bottom:25px
+}
+.hero h1{margin-top:0;font-size:clamp(25px,4vw,40px)}
 .hero p{color:var(--muted);line-height:1.6}
-input,select{width:100%;padding:13px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:white;font-size:15px}
-.controls{display:grid;gap:12px}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-button{cursor:pointer}
-.filters button{padding:9px 13px;border-radius:20px;border:1px solid var(--line);background:var(--panel);color:white}
-.filters button.active{background:var(--green);color:#07110a;border-color:var(--green)}
-.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 15px}
-.heading h2{margin:0}
-#count{font-size:13px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.card:hover{border-color:var(--green)}
-.cover{width:100%;aspect-ratio:460/215;object-fit:cover;display:block;background:#202b40}
-.info{padding:14px;display:flex;flex-direction:column;flex:1}
-.genre{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:bold}
-h3{font-size:17px;margin:9px 0}
-.desc{font-size:13px;color:var(--muted);line-height:1.5;flex:1}
-.btn{display:block;text-align:center;text-decoration:none;padding:11px;border-radius:8px;font-size:13px;font-weight:bold;margin-top:9px;border:0}
-.download{background:var(--green);color:#07110a}
-.disabled{background:#263247;color:#a5b2c6;cursor:not-allowed}
-.notice{background:var(--panel);border:1px solid var(--line);padding:15px;border-radius:10px;margin-top:24px;color:var(--muted);font-size:13px;line-height:1.7}
-.notice strong{color:white}
-footer{text-align:center;color:var(--muted);padding:25px;border-top:1px solid var(--line);margin-top:30px;font-size:13px}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:420px){.grid{grid-template-columns:1fr}}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input,select{
+  padding:13px 14px;border-radius:10px;border:1px solid #344155;
+  background:#111925;color:white;font-size:15px
+}
+input{flex:1;min-width:200px}
+select{min-width:160px}
+.count{color:var(--muted);margin:12px 0}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px
+}
+.card{
+  overflow:hidden;background:var(--panel);border:1px solid #263245;
+  border-radius:14px;transition:transform .18s,border-color .18s
+}
+.card:hover{transform:translateY(-4px);border-color:var(--green)}
+.cover{
+  height:125px;background:linear-gradient(135deg,#243b31,#182039);
+  display:flex;align-items:center;justify-content:center;overflow:hidden
+}
+.cover img{width:100%;height:100%;object-fit:cover}
+.cover .fallback{font-size:30px;font-weight:900;color:var(--green)}
+.info{padding:15px}
+.info h3{font-size:17px;line-height:1.35;margin:0 0 10px}
+.tag{
+  display:inline-block;padding:5px 8px;border-radius:6px;
+  background:#263326;color:#caff9d;font-size:11px;margin:0 4px 8px 0
+}
+.tag.console{background:#352c22;color:#ffd39a}
+.desc{color:var(--muted);font-size:13px;line-height:1.5;min-height:38px}
+.download{
+  width:100%;display:block;text-align:center;text-decoration:none;
+  background:var(--green);color:#10150c;font-weight:bold;
+  border:0;border-radius:8px;padding:11px;margin-top:13px;
+  cursor:pointer
+}
+.download.disabled{background:#2a3443;color:#c0c8d3;cursor:not-allowed}
+.notice{
+  margin-top:25px;padding:16px;border:1px solid #344155;
+  border-radius:12px;color:var(--muted);line-height:1.6
+}
+footer{text-align:center;color:var(--muted);padding:30px 15px}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+@media(max-width:500px){
+  header{padding:22px 5%}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cover{height:95px}
+  .info{padding:10px}
+  .info h3{font-size:14px}
+  .desc{font-size:12px}
+  .download{font-size:12px;padding:10px 5px}
+}
 </style>
 </head>
 <body>
+
 <header>
   <div class="logo">GAME <span>SHOP GG</span></div>
-  <p>Твой каталог компьютерных игр</p>
+  <p>Игровой каталог • Обложки • Поиск • Игры для ПК</p>
 </header>
 
 <main>
   <section class="hero">
-    <h1>Игры для ПК 🎮</h1>
-    <p>Выбирай игру, смотри обложку и скачивай файл прямо с нашего сайта, когда он добавлен в каталог.</p>
+    <h1>Найди свою следующую игру 🎮</h1>
+    <p>
+      Популярные игры, приключения, гонки, футбол и RPG.
+      Выбирай игру через поиск или фильтр.
+    </p>
   </section>
 
-  <section class="controls">
-    <input id="search" type="search" placeholder="🔎 Поиск игры..." aria-label="Поиск">
-    <div class="filters" id="filters"></div>
-  </section>
-
-  <div class="heading">
-    <h2>Каталог игр</h2>
-    <span id="count"></span>
+  <div class="controls">
+    <input id="search" type="search" placeholder="🔎 Поиск игры...">
+    <select id="category">
+      <option value="Все">Все жанры</option>
+      <option value="Экшен">Экшен</option>
+      <option value="Приключения">Приключения</option>
+      <option value="RPG">RPG</option>
+      <option value="Спорт">Спорт</option>
+      <option value="Шутер">Шутеры</option>
+      <option value="Песочница">Песочницы</option>
+      <option value="Стратегия">Стратегии</option>
+    </select>
   </div>
 
+  <div class="count" id="count"></div>
   <section class="grid" id="games"></section>
 
-  <section class="notice">
-    <strong>Как работает скачивание?</strong><br>
-    Для каждой игры нужно загрузить разрешённый к распространению файл в папку
-    <code>downloads</code> репозитория и указать его точное имя в коде.
-    Если файл не добавлен, кнопка скачивания будет отключена.
-    Обложки загружаются отдельно и не являются файлами игры.
-  </section>
+  <div class="notice">
+    <b>О скачивании:</b> сейчас кнопки скачивания неактивны,
+    пока для игры не добавлен файл. Чтобы скачивание шло с твоего
+    сайта, загрузи в репозиторий разрешённый для распространения файл
+    в папку <b>downloads</b> и укажи его путь в коде.
+    Не загружай чужие платные игры без разрешения правообладателя.
+    GitHub Pages сам не хранит игровые файлы, если ты их туда не загрузил.
+  </div>
 </main>
 
-<footer>GAME SHOP GG © 2026</footer>
+<footer>© GAME SHOP GG • Игровой каталог</footer>
 
 <script>
 const games = [
- {name:"Counter-Strike 2",genre:"Шутер",desc:"Командный тактический шутер.",app:730,file:""},
- {name:"Dota 2",genre:"Стратегия",desc:"Командная MOBA-стратегия.",app:570,file:""},
- {name:"Terraria",genre:"Приключения",desc:"Исследуй мир, строй и сражайся.",app:105600,file:""},
- {name:"Stardew Valley",genre:"Симулятор",desc:"Ферма, исследования и жизнь в долине.",app:413150,file:""},
- {name:"Portal 2",genre:"Головоломка",desc:"Головоломки с порталами и физикой.",app:620,file:""},
- {name:"Portal",genre:"Головоломка",desc:"Научные испытания и порталы.",app:400,file:""},
- {name:"Team Fortress 2",genre:"Шутер",desc:"Командный шутер с разными классами.",app:440,file:""},
- {name:"Left 4 Dead 2",genre:"Шутер",desc:"Кооперативный зомби-шутер.",app:550,file:""},
- {name:"Rust",genre:"Выживание",desc:"Выживание, строительство и исследование.",app:252490,file:""},
- {name:"Grand Theft Auto V",genre:"Экшен",desc:"Открытый мир и криминальные приключения.",app:271590,file:""},
- {name:"PUBG: Battlegrounds",genre:"Шутер",desc:"Королевская битва на большой карте.",app:578080,file:""},
- {name:"Apex Legends",genre:"Шутер",desc:"Командная королевская битва.",app:1172470,file:""},
- {name:"Cyberpunk 2077",genre:"RPG",desc:"Футуристический открытый мир.",app:1091500,file:""},
- {name:"The Witcher 3",genre:"RPG",desc:"Большое фэнтезийное приключение.",app:292030,file:""},
- {name:"Fallout: New Vegas",genre:"RPG",desc:"Ролевая игра в постапокалиптическом мире.",app:22380,file:""},
- {name:"Sid Meier's Civilization V",genre:"Стратегия",desc:"Развивай цивилизацию и исследуй мир.",app:8930,file:""},
- {name:"Euro Truck Simulator 2",genre:"Симулятор",desc:"Управляй грузовиком и развивай компанию.",app:227300,file:""},
- {name:"The Forest",genre:"Выживание",desc:"Исследуй остров и постарайся выжить.",app:242760,file:""},
- {name:"Hollow Knight",genre:"Приключения",desc:"Исследуй таинственное подземное королевство.",app:367520,file:""},
- {name:"Hades",genre:"Экшен",desc:"Динамичные сражения в мифологическом мире.",app:1145360,file:""}
+  // ТВОИ 18 ИГР
+  {name:"GTA V",app:"271590",genre:"Экшен",platform:"PC"},
+  {name:"Metro Exodus + Enhanced Edition",app:"412020",genre:"Шутер",platform:"PC"},
+  {name:"Atomic Heart",app:"668580",genre:"Экшен",platform:"PC"},
+  {name:"The Witcher 3: Wild Hunt Remastered",app:"292030",genre:"RPG",platform:"PC"},
+  {name:"God of War III Remastered",app:null,genre:"Экшен",platform:"PlayStation",note:"Официальная версия для ПК не выпущена."},
+  {name:"Gears of War 4",app:null,genre:"Шутер",platform:"PC / Xbox",note:"Обложка может не отображаться в каталоге."},
+  {name:"Bloodborne",app:null,genre:"Экшен",platform:"PlayStation",note:"Официальная версия для ПК не выпущена."},
+  {name:"Gears of War 2: Hollow",app:null,genre:"Экшен",platform:"Проверить",note:"Проверь точное название этой игры."},
+  {name:"Dead Space Remake (2023)",app:"1693980",genre:"Экшен",platform:"PC"},
+  {name:"EA SPORTS FC 27 (FIFA 27)",app:"4080220",genre:"Спорт",platform:"PC"},
+  {name:"Assassin's Creed III Remastered",app:"911400",genre:"Приключения",platform:"PC"},
+  {name:"Fallout 4: Anniversary Edition",app:"377160",genre:"RPG",platform:"PC"},
+  {name:"Little Nightmares III",app:"1392860",genre:"Приключения",platform:"PC"},
+  {name:"S.T.A.L.K.E.R. 2: Heart of Chornobyl",app:"1643320",genre:"Шутер",platform:"PC"},
+  {name:"Marvel's Spider-Man 2",app:"2651280",genre:"Экшен",platform:"PC"},
+  {name:"Mortal Kombat 1 (2023)",app:"1971870",genre:"Экшен",platform:"PC"},
+  {name:"Throne and Liberty",app:"2429640",genre:"RPG",platform:"PC"},
+  {name:"God of War Ragnarök",app:"2322010",genre:"Экшен",platform:"PC"},
+
+  // ЕЩЁ 12 ПОПУЛЯРНЫХ ИГР
+  {name:"Counter-Strike 2",app:"730",genre:"Шутер",platform:"PC"},
+  {name:"PUBG: Battlegrounds",app:"578080",genre:"Шутер",platform:"PC"},
+  {name:"Cyberpunk 2077",app:"1091500",genre:"RPG",platform:"PC"},
+  {name:"Red Dead Redemption 2",app:"1174180",genre:"Приключения",platform:"PC"},
+  {name:"Elden Ring",app:"1245620",genre:"RPG",platform:"PC"},
+  {name:"Forza Horizon 5",app:"1551360",genre:"Спорт",platform:"PC"},
+  {name:"Resident Evil 4",app:"2050650",genre:"Экшен",platform:"PC"},
+  {name:"Hogwarts Legacy",app:"990080",genre:"Приключения",platform:"PC"},
+  {name:"The Forest",app:"242760",genre:"Песочница",platform:"PC"},
+  {name:"Terraria",app:"105600",genre:"Песочница",platform:"PC"},
+  {name:"Dota 2",app:"570",genre:"Стратегия",platform:"PC"},
+  {name:"Left 4 Dead 2",app:"550",genre:"Шутер",platform:"PC"}
 ];
 
-const categories=["Все","Шутер","Экшен","Стратегия","Приключения","Симулятор","Головоломка","Выживание","RPG"];
-let activeCategory="Все";
-const $=id=>document.getElementById(id);
+// Оставляй file пустым, пока не загрузил разрешённый файл.
+// Пример для собственного разрешённого файла:
+// file:"downloads/my-game-demo.zip"
+const files = {};
 
-function safeDownloadPath(path){
-  if(typeof path!=="string" || !path.startsWith("downloads/")) return "";
-  if(path.includes("..") || path.includes("\\") || path.includes("?") || path.includes("#")) return "";
-  if(!/^downloads\/[a-zA-Z0-9._/-]+$/.test(path)) return "";
-  return path;
-}
+function makeCard(game) {
+  const card = document.createElement("article");
+  card.className = "card";
 
-function buildFilters(){
-  $("filters").replaceChildren();
-  categories.forEach(category=>{
-    const button=document.createElement("button");
-    button.textContent=category;
-    button.className=activeCategory===category?"active":"";
-    button.onclick=()=>{
-      activeCategory=category;
-      buildFilters();
-      render();
+  const cover = document.createElement("div");
+  cover.className = "cover";
+
+  if (game.app) {
+    const img = document.createElement("img");
+    img.src = `https://cdn.akamai.steamstatic.com/steam/apps/${game.app}/header.jpg`;
+    img.alt = "Обложка " + game.name;
+    img.loading = "lazy";
+    img.onerror = () => {
+      img.remove();
+      const fallback = document.createElement("div");
+      fallback.className = "fallback";
+      fallback.textContent = "GAME";
+      cover.appendChild(fallback);
     };
-    $("filters").appendChild(button);
-  });
+    cover.appendChild(img);
+  } else {
+    const fallback = document.createElement("div");
+    fallback.className = "fallback";
+    fallback.textContent = "GAME";
+    cover.appendChild(fallback);
+  }
+
+  const info = document.createElement("div");
+  info.className = "info";
+
+  const title = document.createElement("h3");
+  title.textContent = game.name;
+
+  const tag = document.createElement("span");
+  tag.className = "tag";
+  tag.textContent = game.genre;
+
+  const platform = document.createElement("span");
+  platform.className = "tag" +
+    (game.platform !== "PC" ? " console" : "");
+  platform.textContent = game.platform;
+
+  const desc = document.createElement("div");
+  desc.className = "desc";
+  desc.textContent = game.note || "Игра для игрового каталога GAME SHOP GG.";
+
+  const button = document.createElement("a");
+  button.className = "download";
+
+  const path = files[game.name] || "";
+  // Разрешаем только локальные файлы из папки downloads.
+  const validPath =
+    /^downloads\/[A-Za-z0-9._/-]+$/.test(path) &&
+    !path.includes("..") &&
+    !path.includes("//");
+
+  if (validPath) {
+    button.href = path;
+    button.download = "";
+    button.textContent = "⬇ Скачать файл";
+  } else {
+    button.href = "#";
+    button.classList.add("disabled");
+    button.textContent = "Файл ещё не добавлен";
+    button.setAttribute("aria-disabled", "true");
+    button.addEventListener("click", event => event.preventDefault());
+  }
+
+  info.append(title, tag, platform, desc, button);
+  card.append(cover, info);
+  return card;
 }
 
-function render(){
-  const query=$("search").value.trim().toLowerCase();
-  const visible=games.filter(game=>
-    (activeCategory==="Все" || game.genre===activeCategory) &&
-    (game.name+" "+game.desc+" "+game.genre).toLowerCase().includes(query)
+function renderGames() {
+  const search = document.getElementById("search").value
+    .trim().toLowerCase();
+  const category = document.getElementById("category").value;
+  const container = document.getElementById("games");
+
+  const filtered = games.filter(game =>
+    game.name.toLowerCase().includes(search) &&
+    (category === "Все" || game.genre === category)
   );
-  $("count").textContent="Найдено: "+visible.length;
-  $("games").replaceChildren();
 
-  visible.forEach(game=>{
-    const card=document.createElement("article");
-    card.className="card";
+  container.replaceChildren();
+  filtered.forEach(game => container.appendChild(makeCard(game)));
 
-    const cover=document.createElement("img");
-    cover.className="cover";
-    cover.loading="lazy";
-    cover.alt="Обложка игры "+game.name;
-    cover.src="https://cdn.akamai.steamstatic.com/steam/apps/"+game.app+"/header.jpg";
-    cover.onerror=()=>{
-      cover.onerror=null;
-      cover.style.display="none";
-    };
+  document.getElementById("count").textContent =
+    `Найдено игр: ${filtered.length} из ${games.length}`;
 
-    const info=document.createElement("div");
-    info.className="info";
-
-    const genre=document.createElement("span");
-    genre.className="genre";
-    genre.textContent=game.genre;
-
-    const title=document.createElement("h3");
-    title.textContent=game.name;
-
-    const desc=document.createElement("p");
-    desc.className="desc";
-    desc.textContent=game.desc;
-
-    const path=safeDownloadPath(game.file);
-    const button=document.createElement(path?"a":"button");
-    button.className="btn "+(path?"download":"disabled");
-
-    if(path){
-      button.href=path;
-      button.download="";
-      button.textContent="⬇ Скачать с GAME SHOP GG";
-    }else{
-      button.type="button";
-      button.textContent="Файл ещё не добавлен";
-      button.disabled=true;
-      button.title="Сначала загрузи разрешённый файл игры в папку downloads.";
-    }
-
-    info.append(genre,title,desc,button);
-    card.append(cover,info);
-    $("games").appendChild(card);
-  });
+  if (filtered.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "Игры не найдены. Попробуй другое название.";
+    container.appendChild(empty);
+  }
 }
 
-$("search").addEventListener("input",render);
-buildFilters();
-render();
+document.getElementById("search").addEventListener("input", renderGames);
+document.getElementById("category").addEventListener("change", renderGames);
+
+renderGames();
 </script>
 </body>
 </html>
