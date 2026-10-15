@@ -3,168 +3,352 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090d12">
-<meta name="description" content="Game Xit — игровые новости, настройки FPS, гайды и игры для слабых ПК.">
-<title>Game Xit — Игровой портал</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b10">
+<meta name="description" content="GAME SHOP GG — каталог компьютерных игр, обзоры, системные требования и официальные ссылки на скачивание.">
+<title>GAME SHOP GG — Игры для ПК</title>
 <style>
-:root{--bg:#090d12;--panel:#111923;--green:#a3ff12;--text:#f2f5f8;--muted:#a0adbb}
+:root{--bg:#090b10;--panel:#121722;--panel2:#191f2c;--line:#293243;--green:#a8ff35;--text:#f5f7fb;--muted:#a6afc0}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-header{border-bottom:1px solid #202b36;background:#0b1017}
-nav{max-width:1120px;margin:auto;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.logo{font-size:27px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--green)}
-nav a{color:var(--text);text-decoration:none;margin-left:18px;font-size:14px}
-nav a:hover{color:var(--green)}
-.hero{max-width:1120px;margin:30px auto;padding:60px 24px;border-radius:20px;background:radial-gradient(ellipse at 90% 10%,#294a21 0,transparent 45%),linear-gradient(120deg,#17232a,#10151d 65%);border:1px solid #26372d}
-.tag{color:var(--green);font-size:12px;font-weight:bold;letter-spacing:2px}
-h1{font-size:clamp(36px,7vw,66px);line-height:1.03;margin:16px 0}
-.hero p{color:var(--muted);max-width:560px;line-height:1.7}
-.btn{display:inline-block;margin-top:16px;padding:13px 20px;border-radius:9px;background:var(--green);color:#10150b;font-weight:bold;text-decoration:none;border:0;cursor:pointer}
-main{max-width:1120px;margin:0 auto;padding:10px 20px 50px}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-h2{font-size:25px}
-.search{width:100%;max-width:360px;padding:13px;background:#111923;color:white;border:1px solid #33404c;border-radius:9px;font-size:15px}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:10;background:#090b10ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{max-width:1250px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:1000;letter-spacing:-1px;text-decoration:none}
+.logo span{color:var(--green)}
+.navlinks{display:flex;gap:20px;flex-wrap:wrap}
+.navlinks a{text-decoration:none;color:#c8d0dd;font-size:14px}
+.navlinks a:hover{color:var(--green)}
+.wrap{max-width:1250px;margin:auto;padding:0 22px}
+.hero{margin:28px auto 35px;padding:48px 38px;border:1px solid #303b42;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 85% 20%,#385623aa,transparent 38%),linear-gradient(120deg,#1c2930,#111722 60%,#11170e)}
+.eyebrow{color:var(--green);font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font-size:clamp(37px,6vw,67px);line-height:1.03;max-width:700px;margin:15px 0}
+.hero h1 span{color:var(--green)}
+.hero p{color:#bac4d2;max-width:580px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border:1px solid transparent;border-radius:9px;text-decoration:none;font-weight:bold;background:var(--green);color:#11170b}
+.btn:hover{filter:brightness(1.08)}
+.btn.secondary{background:var(--panel2);color:var(--text);border-color:var(--line)}
+.hero .btn{margin:10px 8px 0 0}
+.stats{display:flex;gap:25px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-size:13px}
+.stats b{color:var(--text)}
+.section{padding:12px 0 35px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+h2{font-size:25px;margin:10px 0 18px}
+.searchrow{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 15px}
+.field{min-width:0;width:100%;padding:13px 14px;background:#111722;color:var(--text);border:1px solid var(--line);border-radius:9px;outline:none}
+.field:focus{border-color:var(--green)}
+.search{flex:1;min-width:220px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0 22px}
-.filter{background:#151e28;color:#d8e0e8;border:1px solid #2a3642;padding:9px 14px;border-radius:20px;cursor:pointer}
-.filter.active,.filter:hover{background:var(--green);color:#10150b;border-color:var(--green)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.card{background:var(--panel);border:1px solid #202d39;border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s}
-.card:hover{transform:translateY(-4px);border-color:#83cb25}
-.art{height:135px;display:flex;align-items:center;justify-content:center;font-size:43px;font-weight:900;background:linear-gradient(135deg,#172b36,#263b24)}
-.art.purple{background:linear-gradient(135deg,#282044,#15273a)}
-.art.orange{background:linear-gradient(135deg,#492d1c,#222d39)}
-.art.blue{background:linear-gradient(135deg,#172c50,#193b39)}
-.art.red{background:linear-gradient(135deg,#4a2026,#242737)}
-.content{padding:18px}
-.category{color:var(--green);font-size:11px;text-transform:uppercase;font-weight:bold;letter-spacing:1px}
-h3{font-size:18px;margin:10px 0}
-.content p{font-size:14px;color:var(--muted);line-height:1.6;min-height:44px}
-.more{background:transparent;border:0;color:var(--green);font-weight:bold;cursor:pointer;padding:8px 0}
-.empty{color:var(--muted);padding:20px 0}
-.info{margin-top:42px;padding:24px;background:#111923;border:1px solid #26333f;border-radius:14px}
-.info p{color:var(--muted);line-height:1.7}
-footer{text-align:center;border-top:1px solid #202b36;padding:26px 16px;color:var(--muted);font-size:13px}
-#notice{color:var(--green);font-size:14px}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{margin:16px 12px;padding:38px 20px}nav{padding:16px}.navlinks a{margin-left:8px}}
-@media(max-width:480px){.grid{grid-template-columns:1fr}.art{height:120px}.navlinks{width:100%}.navlinks a{margin:0 12px 0 0}}
+.chip{padding:9px 14px;border:1px solid var(--line);border-radius:30px;background:#111722;color:#d3d9e4}
+.chip.active,.chip:hover{background:var(--green);color:#10150b;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.game{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:transform .2s,border-color .2s}
+.game:hover{transform:translateY(-4px);border-color:#82bd3d}
+.cover{height:145px;background:linear-gradient(135deg,#283746,#1a241a);position:relative;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .placeholder{height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:var(--green)}
+.cover-label{position:absolute;bottom:8px;left:8px;background:#080a0cdd;border-radius:5px;padding:5px 8px;font-size:10px;font-weight:bold;letter-spacing:.7px}
+.game-body{padding:14px}
+.genre{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1px;font-weight:bold}
+.game h3{font-size:17px;margin:8px 0}
+.game p{font-size:13px;line-height:1.5;color:var(--muted);min-height:39px;margin:0 0 13px}
+.game-actions{display:flex;gap:7px}
+.game-actions button{flex:1;padding:9px 7px;border-radius:7px;font-size:12px;font-weight:bold}
+.details{background:#222b38;border:1px solid #354052;color:white}
+.details:hover{border-color:var(--green)}
+.download{background:var(--green);border:1px solid var(--green);color:#10150b}
+.empty{color:var(--muted);padding:30px 0}
+.panel{padding:25px;background:var(--panel);border:1px solid var(--line);border-radius:15px;margin:16px 0 36px}
+.panel p,.muted{color:var(--muted);line-height:1.65;font-size:14px}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.formitem label{display:block;font-size:13px;color:#d3d9e4;margin-bottom:7px}
+.formitem.full{grid-column:1/-1}
+textarea.field{resize:vertical;min-height:85px}
+.smallnote{font-size:12px;color:var(--muted);line-height:1.6}
+#formMessage{color:var(--green);font-size:13px}
+footer{border-top:1px solid var(--line);padding:26px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+dialog{width:min(650px,calc(100% - 24px));max-height:90vh;overflow:auto;background:#111722;color:var(--text);border:1px solid #3b4656;border-radius:16px;padding:0}
+dialog::backdrop{background:#000b;backdrop-filter:blur(4px)}
+.modal-top{height:210px;background:#202938;position:relative}
+.modal-top img{width:100%;height:100%;object-fit:cover}
+.modal-content{padding:22px}
+.modal-content h2{margin:9px 0}
+.modal-content p{color:#c0cad8;line-height:1.7;font-size:14px}
+.modal-close{position:absolute;right:12px;top:12px;background:#080a0dcc;color:white;border:1px solid #596273;border-radius:8px;padding:8px 11px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.requirements{background:#0b1018;border:1px solid var(--line);border-radius:9px;padding:13px;color:#ccd4df;font-size:13px;line-height:1.7;white-space:pre-line}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.wrap{padding:0 13px}.nav{padding:14px}.hero{padding:32px 20px;margin-top:15px}.cover{height:115px}.game-body{padding:10px}.game h3{font-size:15px}.game p{font-size:12px}.game-actions button{font-size:11px}.formgrid{grid-template-columns:1fr}.formitem.full{grid-column:auto}.navlinks{gap:12px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr 1fr}.cover{height:95px}.game-actions{flex-direction:column}}
 </style>
 </head>
 <body>
 <header>
-<nav>
-<div class="logo">GAME <span>XIT</span></div>
-<div class="navlinks">
-<a href="#games">Игры</a>
-<a href="#guides">Гайды</a>
-<a href="#about">О сайте</a>
-</div>
-</nav>
+  <nav class="nav">
+    <a class="logo" href="#">GAME <span>SHOP GG</span></a>
+    <div class="navlinks">
+      <a href="#catalog">Каталог игр</a>
+      <a href="#addgame">Добавить игру</a>
+      <a href="#about">О сайте</a>
+    </div>
+  </nav>
 </header>
 
-<section class="hero">
-<div class="tag">ТВОЯ ИГРОВАЯ ТЕРРИТОРИЯ</div>
-<h1>Играй умнее.<br><span style="color:#a3ff12">Играй лучше.</span></h1>
-<p>Настройки FPS, полезные гайды и подборки игр для мощных и слабых ПК. Всё самое нужное для геймеров — в одном месте.</p>
-<a class="btn" href="#games">Исследовать игры ↓</a>
-</section>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Твой игровой мир</div>
+    <h1>Найди свою<br><span>следующую игру.</span></h1>
+    <p>Каталог компьютерных игр, описания, жанры и ссылки на официальные страницы скачивания. Ищи, выбирай и открывай новые игровые миры.</p>
+    <a class="btn" href="#catalog">🎮 Смотреть игры</a>
+    <a class="btn secondary" href="#addgame">＋ Добавить игру</a>
+    <div class="stats">
+      <span><b id="gameCount">0</b> игр в каталоге</span>
+      <span>ПК · Разные жанры</span>
+      <span>Начни играть!</span>
+    </div>
+  </section>
 
-<main>
-<section id="games">
-<div class="section-head">
-<h2>Игры и гайды</h2>
-<input id="search" class="search" type="search" placeholder="Найти игру или гайд...">
+  <section class="section" id="catalog">
+    <div class="section-title"><h2>🎮 Каталог игр</h2></div>
+    <div class="searchrow">
+      <input id="search" class="field search" type="search" placeholder="🔎 Найти игру по названию...">
+      <select id="sort" class="field" style="width:auto;max-width:100%">
+        <option value="default">Сначала популярные</option>
+        <option value="az">Название: А–Я</option>
+        <option value="za">Название: Я–А</option>
+      </select>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip active" data-category="Все">Все игры</button>
+      <button class="chip" data-category="Шутеры">Шутеры</button>
+      <button class="chip" data-category="Экшен">Экшен</button>
+      <button class="chip" data-category="Гонки">Гонки</button>
+      <button class="chip" data-category="Приключения">Приключения</button>
+      <button class="chip" data-category="Стратегии">Стратегии</button>
+      <button class="chip" data-category="Инди">Инди</button>
+    </div>
+    <div class="grid" id="gameGrid"></div>
+    <p class="empty" id="empty" hidden>Игры не найдены. Попробуй другое название или категорию.</p>
+  </section>
+
+  <section class="section" id="addgame">
+    <div class="panel">
+      <div class="eyebrow">Расширяй каталог</div>
+      <h2>＋ Добавить игру</h2>
+      <p>Заполни информацию, чтобы добавить игру в каталог этого браузера.</p>
+      <form id="addForm">
+        <div class="formgrid">
+          <div class="formitem">
+            <label for="gameName">Название игры *</label>
+            <input class="field" id="gameName" required maxlength="80" placeholder="Например, My Game">
+          </div>
+          <div class="formitem">
+            <label for="gameGenre">Жанр *</label>
+            <select class="field" id="gameGenre" required>
+              <option value="Шутеры">Шутеры</option>
+              <option value="Экшен">Экшен</option>
+              <option value="Гонки">Гонки</option>
+              <option value="Приключения">Приключения</option>
+              <option value="Стратегии">Стратегии</option>
+              <option value="Инди">Инди</option>
+              <option value="Другое">Другое</option>
+            </select>
+          </div>
+          <div class="formitem full">
+            <label for="gameDescription">Описание игры *</label>
+            <textarea class="field" id="gameDescription" required maxlength="600" placeholder="Расскажи об игре..."></textarea>
+          </div>
+          <div class="formitem">
+            <label for="gameImage">Ссылка на обложку (необязательно)</label>
+            <input class="field" id="gameImage" type="url" placeholder="https://example.com/cover.jpg">
+          </div>
+          <div class="formitem">
+            <label for="gameLink">Официальная страница игры *</label>
+            <input class="field" id="gameLink" type="url" required placeholder="https://store.steampowered.com/...">
+          </div>
+          <div class="formitem full">
+            <label for="gameRequirements">Системные требования (необязательно)</label>
+            <textarea class="field" id="gameRequirements" maxlength="500" placeholder="ОС, процессор, видеокарта, RAM..."></textarea>
+          </div>
+          <div class="formitem full">
+            <button class="btn" type="submit">＋ Добавить в каталог</button>
+            <p class="smallnote">Добавляй только настоящие ссылки на официальные магазины или сайты разработчиков. Не вставляй неизвестные EXE-файлы.</p>
+            <p id="formMessage" aria-live="polite"></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="panel" id="about">
+    <h2>О GAME SHOP GG</h2>
+    <p class="muted">Наш игровой портал помогает находить компьютерные игры, читать описания и переходить на официальные страницы разработчиков и магазинов. Каталог будет расширяться новыми играми и полезной информацией.</p>
+    <p class="smallnote">GAME SHOP GG — независимый игровой каталог. Названия, обложки и торговые марки принадлежат их соответствующим владельцам.</p>
+  </section>
 </div>
-<div class="filters">
-<button class="filter active" data-filter="all">Все материалы</button>
-<button class="filter" data-filter="fps">FPS и настройки</button>
-<button class="filter" data-filter="pc">Для слабых ПК</button>
-<button class="filter" data-filter="news">Игры</button>
-</div>
-<div class="grid" id="grid">
 
-<article class="card" data-category="fps" data-search="pubg mobile gameloop настройки fps лаги">
-<div class="art">PUBG</div>
-<div class="content"><span class="category">FPS и настройки</span><h3>PUBG Mobile: настройки FPS</h3><p>Как подобрать настройки эмулятора и графики для более плавной игры.</p><button class="more" data-info="PUBG Mobile">Подробнее →</button></div>
-</article>
+<footer>© <span id="year"></span> GAME SHOP GG · Играй с удовольствием.</footer>
 
-<article class="card" data-category="pc" data-search="слабый пк игры i3 rx 470">
-<div class="art purple">LOW PC</div>
-<div class="content"><span class="category">Для слабых ПК</span><h3>Игры для слабого компьютера</h3><p>Подборка игр с умеренными системными требованиями.</p><button class="more" data-info="Слабые ПК">Подробнее →</button></div>
-</article>
-
-<article class="card" data-category="fps" data-search="cs2 настройки fps оптимизация">
-<div class="art orange">CS2</div>
-<div class="content"><span class="category">FPS и настройки</span><h3>CS2: как настроить FPS</h3><p>Графика, параметры запуска и настройки для комфортной игры.</p><button class="more" data-info="CS2">Подробнее →</button></div>
-</article>
-
-<article class="card" data-category="news" data-search="игры новинки релизы pc">
-<div class="art blue">NEW GAMES</div>
-<div class="content"><span class="category">Игры</span><h3>Какие игры попробовать?</h3><p>Ищем интересные игры разных жанров для компьютера.</p><button class="more" data-info="Новые игры">Подробнее →</button></div>
-</article>
-
-<article class="card" data-category="fps" data-search="free fire эмулятор настройки fps">
-<div class="art red">FREE FIRE</div>
-<div class="content"><span class="category">FPS и настройки</span><h3>Free Fire на эмуляторе</h3><p>Разбираемся с FPS, управлением и плавностью игры.</p><button class="more" data-info="Free Fire">Подробнее →</button></div>
-</article>
-
-<article class="card" data-category="pc" data-search="кооператив игры на двоих джойстики">
-<div class="art">2 PLAYERS</div>
-<div class="content"><span class="category">Для слабых ПК</span><h3>Игры на двоих за одним ПК</h3><p>Кооперативные игры для друзей и двух контроллеров.</p><button class="more" data-info="Игры на двоих">Подробнее →</button></div>
-</article>
-
-</div>
-<p id="empty" class="empty" hidden>Ничего не найдено. Попробуй другой запрос.</p>
-<p id="notice" aria-live="polite"></p>
-</section>
-
-<section class="info" id="guides">
-<h2>Полезные игровые советы</h2>
-<p>Перед изменением настроек проверяй системные требования игры. Закрывай ненужные приложения, обновляй драйверы видеокарты с официального сайта и следи за температурой компьютера.</p>
-<p>Мы будем добавлять подробные тесты, понятные инструкции и собственные рекомендации.</p>
-</section>
-
-<section class="info" id="about">
-<h2>О Game Xit</h2>
-<p>Game Xit — игровой проект для тех, кто хочет лучше разбираться в играх, настраивать компьютер и находить интересные проекты. Сайт развивается и будет пополняться новыми материалами.</p>
-</section>
-</main>
-
-<footer>© <span id="year"></span> Game Xit · Играй умнее.</footer>
+<dialog id="gameDialog">
+  <div class="modal-top">
+    <img id="modalImage" alt="Обложка игры">
+    <button type="button" class="modal-close" id="closeDialog">✕ Закрыть</button>
+  </div>
+  <div class="modal-content">
+    <div class="eyebrow" id="modalGenre"></div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+    <h3>Системные требования</h3>
+    <div class="requirements" id="modalRequirements">Точные требования смотри на официальной странице игры.</div>
+    <div class="modal-actions">
+      <a class="btn" id="modalDownload" href="#" target="_blank" rel="noopener noreferrer">↗ Официальная страница / Скачать</a>
+      <button type="button" class="btn secondary" id="modalCloseBottom">Назад в каталог</button>
+    </div>
+    <p class="smallnote">Доступность скачивания и цена зависят от официального магазина или разработчика.</p>
+  </div>
+</dialog>
 
 <script>
-const search=document.getElementById('search');
-const cards=[...document.querySelectorAll('.card')];
-const filters=[...document.querySelectorAll('.filter')];
-const empty=document.getElementById('empty');
-const notice=document.getElementById('notice');
-let active='all';
+const initialGames = [
+ {id:"cs2",name:"Counter-Strike 2",genre:"Шутеры",description:"Тактический командный шутер с соревновательными матчами и разнообразным оружием.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/header.jpg",link:"https://store.steampowered.com/app/730/CounterStrike_2/",requirements:"Проверь актуальные минимальные требования на странице Steam."},
+ {id:"dota2",name:"Dota 2",genre:"Стратегии",description:"Командная MOBA, в которой герои сражаются на поле боя и работают вместе ради победы.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg",link:"https://store.steampowered.com/app/570/Dota_2/",requirements:"Проверь актуальные минимальные требования на странице Steam."},
+ {id:"pubg",name:"PUBG: Battlegrounds",genre:"Шутеры",description:"Королевская битва: собирай снаряжение, исследуй карту и соревнуйся с другими игроками.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/header.jpg",link:"https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS/",requirements:"Для комфортной игры проверь актуальные требования Steam."},
+ {id:"apex",name:"Apex Legends",genre:"Шутеры",description:"Командный геройский шутер с уникальными способностями персонажей и динамичными боями.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg",link:"https://store.steampowered.com/app/1172470/Apex_Legends/",requirements:"Проверь требования и доступность игры в своём регионе."},
+ {id:"gtav",name:"Grand Theft Auto V",genre:"Экшен",description:"Большой открытый мир, миссии, автомобили и криминальная история в вымышленном городе.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg",link:"https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/",requirements:"Проверь требования для доступного издания игры."},
+ {id:"terraria",name:"Terraria",genre:"Приключения",description:"Исследуй мир, добывай ресурсы, строй базы, создавай предметы и сражайся с боссами.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg",link:"https://store.steampowered.com/app/105600/Terraria/",requirements:"Смотри актуальные требования на странице магазина."},
+ {id:"stardew",name:"Stardew Valley",genre:"Инди",description:"Уютная фермерская игра: выращивай урожай, знакомься с жителями и исследуй окрестности.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg",link:"https://store.steampowered.com/app/413150/Stardew_Valley/",requirements:"Смотри актуальные требования на странице магазина."},
+ {id:"portal2",name:"Portal 2",genre:"Приключения",description:"Головоломки от первого лица, необычная физика и оригинальные испытания.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/620/header.jpg",link:"https://store.steampowered.com/app/620/Portal_2/",requirements:"Смотри актуальные требования на странице магазина."},
+ {id:"rust",name:"Rust",genre:"Экшен",description:"Многопользовательское выживание: собирай ресурсы, строй укрытие и взаимодействуй с другими игроками.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/header.jpg",link:"https://store.steampowered.com/app/252490/Rust/",requirements:"Проверь требования: игра может быть требовательной к памяти и процессору."},
+ {id:"tf2",name:"Team Fortress 2",genre:"Шутеры",description:"Командный сетевой шутер с классами персонажей и ярким мультяшным стилем.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/header.jpg",link:"https://store.steampowered.com/app/440/Team_Fortress_2/",requirements:"Смотри системные требования на официальной странице."},
+ {id:"left4dead2",name:"Left 4 Dead 2",genre:"Экшен",description:"Кооперативный экшен, в котором команда игроков вместе проходит опасные уровни.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/550/header.jpg",link:"https://store.steampowered.com/app/550/Left_4_Dead_2/",requirements:"Смотри актуальные требования на странице магазина."},
+ {id:"cyberpunk",name:"Cyberpunk 2077",genre:"Приключения",description:"Ролевая игра в футуристическом открытом мире с заданиями, исследованием и развитием героя.",image:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg",link:"https://store.steampowered.com/app/1091500/Cyberpunk_2077/",requirements:"Проверь требования особенно внимательно: игре нужна подходящая видеокарта и память."}
+];
 
-function update(){
- const q=search.value.toLowerCase().trim();
- let count=0;
- cards.forEach(card=>{
-  const matchesText=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);
-  const matchesCategory=active==='all'||card.dataset.category===active;
-  const show=matchesText&&matchesCategory;
-  card.hidden=!show;
-  if(show)count++;
- });
- empty.hidden=count!==0;
+const STORAGE_KEY="gameshopgg_custom_games_v1";
+const $=id=>document.getElementById(id);
+let customGames=[];
+try{
+ const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+ if(Array.isArray(saved)) customGames=saved.filter(g=>g&&typeof g.name==="string"&&typeof g.link==="string");
+}catch(e){customGames=[]}
+
+let category="Все";
+let activeGame=null;
+const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeURL=value=>{
+ try{
+  const u=new URL(value);
+  return ["http:","https:"].includes(u.protocol)?u.href:"";
+ }catch(e){return "";}
+};
+const allGames=()=>[...initialGames,...customGames];
+
+function renderGames(){
+ let list=allGames();
+ const q=$("search").value.trim().toLowerCase();
+ if(category!=="Все")list=list.filter(g=>g.genre===category);
+ if(q)list=list.filter(g=>(g.name+" "+g.genre+" "+g.description).toLowerCase().includes(q));
+ if($("sort").value==="az")list.sort((a,b)=>a.name.localeCompare(b.name,"ru"));
+ if($("sort").value==="za")list.sort((a,b)=>b.name.localeCompare(a.name,"ru"));
+ $("gameCount").textContent=allGames().length;
+ $("empty").hidden=list.length>0;
+ $("gameGrid").innerHTML=list.map(g=>{
+  const image=safeURL(g.image||"");
+  return `<article class="game">
+    <div class="cover">${image?`<img src="${escapeHTML(image)}" alt="${escapeHTML(g.name)}" loading="lazy" onerror="this.remove()">`:`<div class="placeholder">GAME</div>`}<span class="cover-label">PC GAME</span></div>
+    <div class="game-body">
+      <span class="genre">${escapeHTML(g.genre)}</span>
+      <h3>${escapeHTML(g.name)}</h3>
+      <p>${escapeHTML(g.description)}</p>
+      <div class="game-actions">
+        <button class="details" type="button" data-details="${escapeHTML(g.id)}">Подробнее</button>
+        <button class="download" type="button" data-download="${escapeHTML(g.id)}">Открыть ↗</button>
+      </div>
+    </div>
+  </article>`;
+ }).join("");
 }
-search.addEventListener('input',update);
-filters.forEach(button=>button.addEventListener('click',()=>{
- active=button.dataset.filter;
- filters.forEach(b=>b.classList.toggle('active',b===button));
- update();
-}));
-document.querySelectorAll('.more').forEach(button=>{
- button.addEventListener('click',()=>{
-  const name=button.dataset.info;
-  notice.textContent='Материал «'+name+'» пока готовится. Скоро здесь появится подробный гайд!';
- });
+
+function findGame(id){return allGames().find(g=>g.id===id)}
+function openGame(g){
+ if(!g)return;
+ activeGame=g;
+ $("modalTitle").textContent=g.name;
+ $("modalGenre").textContent=g.genre;
+ $("modalDescription").textContent=g.description;
+ $("modalRequirements").textContent=g.requirements||"Точные требования смотри на официальной странице игры.";
+ const image=safeURL(g.image||"");
+ $("modalImage").src=image||"";
+ $("modalImage").alt="Обложка: "+g.name;
+ $("modalImage").style.display=image?"block":"none";
+ $("modalDownload").href=safeURL(g.link)||"https://store.steampowered.com/";
+ if(!$("gameDialog").open)$("gameDialog").showModal();
+}
+$("gameGrid").addEventListener("click",e=>{
+ const detail=e.target.closest("[data-details]");
+ const download=e.target.closest("[data-download]");
+ if(detail)openGame(findGame(detail.dataset.details));
+ if(download){
+  const g=findGame(download.dataset.download);
+  if(g&&safeURL(g.link))window.open(safeURL(g.link),"_blank","noopener,noreferrer");
+ }
 });
-document.getElementById('year').textContent=new Date().getFullYear();
+$("closeDialog").addEventListener("click",()=>$("gameDialog").close());
+$("modalCloseBottom").addEventListener("click",()=>$("gameDialog").close());
+$("gameDialog").addEventListener("click",e=>{
+ if(e.target===$("gameDialog"))$("gameDialog").close();
+});
+$("modalDownload").addEventListener("click",e=>{
+ if(!activeGame||!safeURL(activeGame.link))e.preventDefault();
+});
+$("search").addEventListener("input",renderGames);
+$("sort").addEventListener("change",renderGames);
+$("filters").addEventListener("click",e=>{
+ const b=e.target.closest("[data-category]");
+ if(!b)return;
+ category=b.dataset.category;
+ document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));
+ renderGames();
+});
+
+$("addForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=$("gameName").value.trim();
+ const genre=$("gameGenre").value;
+ const description=$("gameDescription").value.trim();
+ const image=safeURL($("gameImage").value.trim());
+ const link=safeURL($("gameLink").value.trim());
+ const requirements=$("gameRequirements").value.trim();
+ if(!name||!description||!link){
+  $("formMessage").textContent="Заполни название, описание и ссылку на официальную страницу.";
+  return;
+ }
+ if(!link){
+  $("formMessage").textContent="Укажи корректную ссылку, начинающуюся с https://";
+  return;
+ }
+ const game={id:"custom-"+Date.now(),name,genre,description,image,link,requirements};
+ customGames.unshift(game);
+ try{
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(customGames));
+ }catch(err){
+  customGames.shift();
+  $("formMessage").textContent="Браузер не смог сохранить игру. Возможно, хранилище переполнено.";
+  return;
+ }
+ $("addForm").reset();
+ category="Все";
+ document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x.dataset.category==="Все"));
+ $("search").value="";
+ $("formMessage").textContent="Игра добавлена в этот браузер!";
+ renderGames();
+ $("catalog").scrollIntoView({behavior:"smooth"});
+});
+$("year").textContent=new Date().getFullYear();
+renderGames();
 </script>
 </body>
 </html>
